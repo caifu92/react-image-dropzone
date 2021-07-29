@@ -40,10 +40,12 @@ const Dropzone: React.FC<Props> = (props): JSX.Element => {
     }
 
     const handleClickUpload = (e: React.MouseEvent): void => {
+        e.preventDefault();
         hiddenFileInput?.current?.click();
     }
 
     const handleCancelUpload = (e: React.MouseEvent): void => {
+        e.preventDefault();
         isCanceled.current = true;
         setIsUploading(false);
     }
@@ -86,8 +88,8 @@ const Dropzone: React.FC<Props> = (props): JSX.Element => {
                                     return;
                                 }
     
-                                var height = image.height;
-                                var width = image.width;
+                                var height: number = image.height;
+                                var width: number = image.width;
     
                                 if (width != height) {
                                     errMsg = "The image should be square.";
@@ -150,8 +152,8 @@ const Dropzone: React.FC<Props> = (props): JSX.Element => {
                     </div>
                     <div className="dropzone__text">Drag & drop here {props.value && 'to replace'}</div>
                     <div className="dropzone__separator">- or -</div>
-                    {!isUploading && <a href="javascript:void(0);" className="dropzone__select-btn" onClick={handleClickUpload}>Select file to {props.value ? 'replace' : 'upload'}</a>}
-                    {isUploading && <a href="javascript:void(0);" className="dropzone__cancel-btn" onClick={handleCancelUpload}>Cancel</a>}
+                    {!isUploading && <a href="#" className="dropzone__select-btn" onClick={handleClickUpload}>Select file to {props.value ? 'replace' : 'upload'}</a>}
+                    {isUploading && <a href="#" className="dropzone__cancel-btn" onClick={handleCancelUpload}>Cancel</a>}
                     <input type="file" ref={hiddenFileInput} onChange={handleFileChange} style={{display: 'none'}} />
                 </div>
             </div>
