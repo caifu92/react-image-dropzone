@@ -1,0 +1,112 @@
+.dropzone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 100px;
+    height: 470px;
+
+    &--active {
+        background: #F5F9FF;
+        border: 1px dashed #4991E5;
+    }
+
+    &__content {
+        pointer-events: none;
+    }
+
+    &__logo-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        width: 80px;
+        height: 80px;
+        border: 1px solid #D1E3F8;
+        background: #FFFFFF;
+        border-radius: 100%;
+
+        @keyframes rotate-s-loader {
+            from { transform: rotate(0); }
+            to { transform: rotate(360deg); }
+        }
+
+        &--active {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            border: 1px solid #D1E3F8;
+            border-left-color: #4991E5;
+            border-radius: 50%;
+
+            animation-name: rotate-s-loader;
+            animation-iteration-count: infinite;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+        }
+
+        img {
+            transform: rotate(0);
+        }
+    }
+
+    &__text {
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+        color: #324964;
+    }
+
+    &__separator {
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+        color: #6B85A3;
+        margin: 8px 0px;
+    }
+
+    &__select-btn, &__cancel-btn {
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+        color: #4991E5;
+        pointer-events: visible;
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.error-message {
+    position: fixed;
+    width: fit-content;
+    max-width: 350px;
+    text-align: center;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px 30px;
+    border-radius: 5px;
+
+    animation-name: fade-in;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+
+@media screen and (max-width: 568px) {
+    .dropzone {
+        margin: 20px;
+    }
+}

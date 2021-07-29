@@ -1,26 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/Header';
+import Dropzone from './components/Dropzone';
+
+const App = (): JSX.Element => {
+    const [url, setUrl] = useState<string>('');
+
+    const onChange = (newUrl: string): void => {
+        setUrl(newUrl);
+    }
+
+    return (
+        <div className="App">
+            <Header />
+            <Dropzone value={url} onChange={onChange} />
+        </div>
+    );
 }
 
 export default App;
